@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: orange;">
+  <div class="container">
+    <a class="navbar-brand" href="#" style="color: white;">School Database</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/create" routerLinkActive="active" style="color: white;">Add Students</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/list-student" routerLinkActive="active" style="color: white;">View
+            Students</a>
+        </li>
+        <li class="nav-item">
+          <button (click)="register()" class="btn btn-danger" style="background-color: white; color: orange;">Log
+            Out</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container mt-5">
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-3">
+      <label for="name">Name</label>
+      <input type="text" formControlName="name" class="form-control" placeholder="Full Name">
+    </div>
+
+    <div class="mb-3">
+      <label for="email">Email</label>
+      <input type="email" formControlName="email" class="form-control" placeholder="Email">
+    </div>
+
+    <div class="mb-3">
+      <label for="student_course">Student Courses</label>
+      <select class="form-select" formControlName="student_course">
+        <option value="B-Tech">B-Tech</option>
+        <option value="MCA">MCA</option>
+        <option value="BCA">BCA</option>
+        <option value="M-Tech">M-Tech</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="fees">Fees</label>
+      <input type="number" formControlName="fees" class="form-control" placeholder="Fees">
+    </div>
+
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary me-4" [disabled]="!studentForm.valid">Create</button>
+      <button type="reset" class="btn btn-danger">Reset</button>
+    </div>
+  </form>
+</div>
